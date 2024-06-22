@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react'
 import Todoitem from './components/Todoitem';
+import Addtodo from './components/Addtodo';
 const apiUrl = import.meta.env.VITE_API_URL;
 
 
@@ -30,11 +31,6 @@ export default function App() {
     console.log(todos);
   }, [])
 
-
-
-
-
-
   return (
     <>
       <main className="h-screen  p-[4%] ">
@@ -60,7 +56,9 @@ export default function App() {
               find</button>
           </form>
 
-          <div className="bg-slate-300 grow w-[70%]">
+          <Addtodo />
+
+          <div className="bg-slate-300 grow rounded-xl mx-3 p-4 space-y-3" >
             {todos.map((todos) =>
 
               < Todoitem todo={todos} />
