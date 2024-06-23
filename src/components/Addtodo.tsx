@@ -1,26 +1,36 @@
 import { useState } from 'react'
-// const apiUrl = import.meta.env.VITE_API_URL;
+const apiUrl = import.meta.env.VITE_API_URL;
 
-// import { todoType } from '../type/todoType'
-
-// interface AddtodoProps {
-//     todo: todoType
-// }
+interface AddtodoProps {
+    fetchTodos: () => void;
+}
 
 
-export default function Addtodo() {
 
+export default function Addtodo({ fetchTodos }: AddtodoProps) {
+
+    function fetchAddtodo(input: string) {
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ title: input, completed: true })
+        })
+            .then(() => fetchTodos()) // Reload todos after adding a new one
+            .catch(error => console.error('Error adding todo:', error));
+    }
 
 
 
     const [input, setInput] = useState('')
-
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
 
         if (!input.trim()) {
             return
         }
+        fetchAddtodo(input);
         setInput('');
     }
 

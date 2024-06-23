@@ -28,7 +28,6 @@ export default function App() {
 
   useEffect(() => {
     fetchTodos()
-    console.log(todos);
   }, [])
 
   return (
@@ -56,7 +55,7 @@ export default function App() {
               find</button>
           </form>
 
-          <Addtodo />
+          <Addtodo fetchTodos={fetchTodos} />
 
           <div className="bg-slate-300 grow rounded-xl mx-3 p-4 space-y-3" >
             {todos.map((todos) =>
