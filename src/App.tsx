@@ -58,9 +58,9 @@ export default function App() {
           <Addtodo fetchTodos={fetchTodos} />
 
           <div className="bg-slate-300 grow rounded-xl mx-3 p-4 space-y-3" >
-            {todos.map((todos) =>
+            {todos.map((todos, index) =>
 
-              < Todoitem todo={todos} />
+              < Todoitem todo={todos} key={index} />
             )
 
             }

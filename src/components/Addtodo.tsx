@@ -5,8 +5,6 @@ interface AddtodoProps {
     fetchTodos: () => void;
 }
 
-
-
 export default function Addtodo({ fetchTodos }: AddtodoProps) {
 
     function fetchAddtodo(input: string) {
