@@ -60,7 +60,7 @@ export default function App() {
           <div className="bg-slate-300 grow rounded-xl mx-3 p-4 space-y-3" >
             {todos.map((todos, index) =>
 
-              < Todoitem todo={todos} key={index} />
+              < Todoitem todo={todos} key={index} fetchTodos={fetchTodos} />
             )
 
             }
