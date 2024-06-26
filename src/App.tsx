@@ -7,6 +7,7 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
 export default function App() {
   const [input, setInput] = useState('')
+  const [loading, setLoading] = useState(false);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -19,10 +20,12 @@ export default function App() {
 
   const [todos, setTodos] = useState([])
   function fetchTodos() {
+    setLoading(true);
     fetch(apiUrl)
       .then(response => response.json())
       .then(data => setTodos(data))
-
+      .finally(() => setLoading(false))
+      .catch(error => console.error('Error fetching todos:', error));
   }
 
 
@@ -57,14 +60,21 @@ export default function App() {
 
           <Addtodo fetchTodos={fetchTodos} />
 
-          <div className="bg-slate-300 grow rounded-xl mx-3 p-4 space-y-3 pb-10 " >
-            {todos.map((todos, index) =>
+          {loading ?
+            <div className="text-center">Loading...</div>
+            :
 
-              < Todoitem todo={todos} key={index} fetchTodos={fetchTodos} />
-            )
+            <div className="bg-slate-300 grow rounded-xl mx-3 p-4 space-y-3 pb-10 " >
+              {todos.map((todos, index) =>
 
-            }
-          </div>
+                < Todoitem todo={todos} key={index} fetchTodos={fetchTodos} />
+              )
+
+              }
+            </div>
+
+
+          }
         </div>
       </main>
     </>
