@@ -60,21 +60,19 @@ export default function App() {
 
           <Addtodo fetchTodos={fetchTodos} />
 
-          {loading ?
-            <div className="text-center">Loading...</div>
-            :
 
-            <div className="bg-slate-300 grow rounded-xl mx-3 p-4 space-y-3 pb-10 " >
-              {todos.map((todos, index) =>
-
-                < Todoitem todo={todos} key={index} fetchTodos={fetchTodos} />
-              )
-
-              }
+          {loading && <div className="text-center">Loading...</div>}
+          {!loading && (
+            <div className="bg-slate-300 grow rounded-xl mx-3 p-4 space-y-3">
+              {todos.map((todos, index) => (
+                <Todoitem todo={todos} key={index} fetchTodos={fetchTodos} />
+              ))}
             </div>
+          )}
 
 
-          }
+
+
         </div>
       </main>
     </>
