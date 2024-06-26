@@ -33,10 +33,10 @@ export default function App() {
   return (
     <>
       <main className="h-screen  p-[4%] ">
-        <h1 className="text-3xl font-bold underline text-center ">
+        <h1 className="text-3xl font-bold underline text-center mb-5">
           Todo
         </h1>
-        <div className="bg-red-500  rounded-xl space-y-5 max-w-lg mx-auto ">
+        <div className="bg-red-500  rounded-xl space-y-4 max-w-lg mx-auto  py-4">
 
           <form action=""
             className="flex justify-center p-3"
@@ -57,7 +57,7 @@ export default function App() {
 
           <Addtodo fetchTodos={fetchTodos} />
 
-          <div className="bg-slate-300 grow rounded-xl mx-3 p-4 space-y-3" >
+          <div className="bg-slate-300 grow rounded-xl mx-3 p-4 space-y-3 pb-10 " >
             {todos.map((todos, index) =>
 
               < Todoitem todo={todos} key={index} fetchTodos={fetchTodos} />
