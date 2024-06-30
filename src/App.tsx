@@ -33,8 +33,18 @@ export default function App() {
     fetchTodos()
   }, [])
 
+  function LoadingOverlay() {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-100 z-50">
+        <div className="text-black text-2xl">Loading...</div>
+      </div>
+    );
+  }
+
   return (
     <>
+
+      {loading && <LoadingOverlay />}
       <main className="h-screen  p-[4%] ">
         <h1 className="text-3xl font-bold underline text-center mb-5">
           Todo
@@ -61,17 +71,11 @@ export default function App() {
           <Addtodo fetchTodos={fetchTodos} />
 
 
-          {loading && <div className="text-center">Loading...</div>}
-          {!loading && (
-            <div className="bg-slate-300 grow rounded-xl mx-3 p-4 space-y-3">
-              {todos.map((todos, index) => (
-                <Todoitem todo={todos} key={index} fetchTodos={fetchTodos} />
-              ))}
-            </div>
-          )}
-
-
-
+          <div className="bg-slate-300 grow rounded-xl mx-3 p-4 space-y-3">
+            {todos.map((todos, index) => (
+              <Todoitem todo={todos} key={index} fetchTodos={fetchTodos} />
+            ))}
+          </div>
 
         </div>
       </main>
