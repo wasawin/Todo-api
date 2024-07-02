@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react'
-import Todoitem from './components/Todoitem';
-import Addtodo from './components/Addtodo';
+import Todoitem from '@components/Todoitem';
+import Addtodo from "@components/Addtodo";
 const apiUrl = import.meta.env.VITE_API_URL;
 
 

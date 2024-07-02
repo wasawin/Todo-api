@@ -1,5 +1,5 @@
-import { todoType } from '../type/todoType'
-import Deletetodo from './Deletetodo';
+import { todoType } from '@type/todoType'
+import Deletetodo from '@components/Deletetodo';
 interface todoItemProps {
     todo: todoType
     fetchTodos: () => void;
