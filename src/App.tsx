@@ -6,17 +6,17 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
 
 export default function App() {
-  const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
+  // const [input, setInput] = useState('')
+  // function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  //   e.preventDefault()
 
-    if (!input.trim()) {
-      return
-    }
-    setInput('');
-  }
+  //   if (!input.trim()) {
+  //     return
+  //   }
+  //   setInput('');
+  // }
 
   const [todos, setTodos] = useState([])
   function fetchTodos() {
@@ -51,7 +51,7 @@ export default function App() {
         </h1>
         <div className="bg-red-500  rounded-xl space-y-4 max-w-lg mx-auto  py-4">
 
-          <form action=""
+          {/* <form action=""
             className="flex justify-center p-3"
             onSubmit={handleSubmit}>
 
@@ -66,12 +66,15 @@ export default function App() {
               type="submit"
               className="bg-blue-300 p-3 rounded-e-md hover:bg-black hover:text-white">
               find</button>
-          </form>
+          </form> */}
 
           <Addtodo fetchTodos={fetchTodos} />
 
 
           <div className="bg-slate-300 grow rounded-xl mx-3 p-4 space-y-3">
+            {todos && <>
+              <div className="text-center text-xl py-10">Start your to-do list</div>
+            </>}
             {todos.map((todos, index) => (
               <Todoitem todo={todos} key={index} fetchTodos={fetchTodos} />
             ))}

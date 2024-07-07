@@ -8,7 +8,7 @@ interface todoItemProps {
 
 export default function Todoitem({ todo, fetchTodos }: todoItemProps) {
     return (
-        <div>
+        <>
             <div className='flex items-center justify-between'>
                 <div className='flex' >
                     <div className=''>{todo.id}</div>
@@ -20,6 +20,6 @@ export default function Todoitem({ todo, fetchTodos }: todoItemProps) {
 
                 </div>
             </div>
-        </div>
+        </>
     )
 }
