@@ -19,10 +19,7 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [todos, setTodos] = useState<todoType[]>([]);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setSearchTerm(input); // ตั้งค่าการค้นหาจาก input
-  }
+
 
   function fetchTodos() {
     setLoading(true);
@@ -51,7 +48,7 @@ export default function App() {
           Todo
         </h1>
         <div className="bg-red-500 rounded-xl space-y-4 max-w-lg mx-auto py-4">
-          <form className="flex justify-center p-3" onSubmit={handleSubmit}>
+          <form className="flex justify-center p-3">
             <input
               type="text"
               value={input}
