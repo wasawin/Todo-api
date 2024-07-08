@@ -55,16 +55,14 @@ export default function App() {
             <input
               type="text"
               value={input}
-              onChange={(e) => setInput(e.target.value)}
+              onChange={(e) => {
+                setInput(e.target.value);
+                setSearchTerm(e.target.value); // ตั้งค่า searchTerm ทันทีที่มีการเปลี่ยนแปลงในช่องค้นหา
+              }}
               placeholder="Search your todo"
-              className="bg-slate-200 rounded-s-md grow text-center"
+              className="bg-slate-200 rounded-s-md grow text-center p-2"
+
             />
-            <button
-              type="submit"
-              className="bg-blue-300 p-3 rounded-e-md hover:bg-black hover:text-white"
-            >
-              find
-            </button>
           </form>
 
           <Addtodo fetchTodos={fetchTodos} />

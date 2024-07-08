@@ -9,10 +9,10 @@ interface todoItemProps {
 export default function Todoitem({ todo, fetchTodos }: todoItemProps) {
     return (
         <>
-            <div className='flex items-center justify-between'>
-                <div className='flex' >
+            <div className='flex items-center justify-between '>
+                <div className='flex gap-4' >
                     <div className=''>{todo.id}</div>
-                    <div className=' bg-slate-500'>{todo.title}</div>
+                    <div className=''>{todo.title}</div>
 
                 </div>
                 <div className="flex">
