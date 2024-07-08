@@ -1,24 +1,29 @@
-
-import React, { useEffect, useState } from 'react'
-import Todoitem from '@components/Todoitem';
-import Addtodo from "@components/Addtodo";
+import React, { useEffect, useState } from 'react';
+import Todoitem from './components/Todoitem';
+import Addtodo from './components/Addtodo';
+import { todoType } from './type/todoType';
 const apiUrl = import.meta.env.VITE_API_URL;
+
+function LoadingOverlay() {
+  return (
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+      <div className="text-white text-2xl">Loading...</div>
+    </div>
+  );
+}
 
 
 export default function App() {
+  const [input, setInput] = useState('');
+  const [searchTerm, setSearchTerm] = useState(''); // สถานะสำหรับค่าการค้นหา
   const [loading, setLoading] = useState(false);
+  const [todos, setTodos] = useState<todoType[]>([]);
 
-  // const [input, setInput] = useState('')
-  // function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-  //   e.preventDefault()
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setSearchTerm(input); // ตั้งค่าการค้นหาจาก input
+  }
 
-  //   if (!input.trim()) {
-  //     return
-  //   }
-  //   setInput('');
-  // }
-
-  const [todos, setTodos] = useState([])
   function fetchTodos() {
     setLoading(true);
     fetch(apiUrl)
@@ -28,60 +33,58 @@ export default function App() {
       .catch(error => console.error('Error fetching todos:', error));
   }
 
-
   useEffect(() => {
-    fetchTodos()
-  }, [])
+    fetchTodos();
+  }, []);
 
-  function LoadingOverlay() {
-    return (
-      <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-100 z-50">
-        <div className="text-black text-2xl">Loading...</div>
-      </div>
-    );
-  }
+  // ฟังก์ชันกรอง todos
+
+  const filteredTodos = todos.filter((todo: todoType) =>
+    todo.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <>
-
       {loading && <LoadingOverlay />}
-      <main className="h-screen  p-[4%] ">
+      <main className="h-screen p-[4%]">
         <h1 className="text-3xl font-bold underline text-center mb-5">
           Todo
         </h1>
-        <div className="bg-red-500  rounded-xl space-y-4 max-w-lg mx-auto  py-4">
-
-          {/* <form action=""
-            className="flex justify-center p-3"
-            onSubmit={handleSubmit}>
-
-            <input type="text"
+        <div className="bg-red-500 rounded-xl space-y-4 max-w-lg mx-auto py-4">
+          <form className="flex justify-center p-3" onSubmit={handleSubmit}>
+            <input
+              type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Search your todo"
               className="bg-slate-200 rounded-s-md grow text-center"
             />
-
             <button
               type="submit"
-              className="bg-blue-300 p-3 rounded-e-md hover:bg-black hover:text-white">
-              find</button>
-          </form> */}
+              className="bg-blue-300 p-3 rounded-e-md hover:bg-black hover:text-white"
+            >
+              find
+            </button>
+          </form>
 
           <Addtodo fetchTodos={fetchTodos} />
 
 
-          <div className="bg-slate-300 grow rounded-xl mx-3 p-4 space-y-3">
-            {todos && <>
-              <div className="text-center text-xl py-10">Start your to-do list</div>
-            </>}
-            {todos.map((todos, index) => (
-              <Todoitem todo={todos} key={index} fetchTodos={fetchTodos} />
-            ))}
-          </div>
+          {!loading && (
 
+
+            <div className="bg-slate-300 grow rounded-xl mx-3 p-4 space-y-3">
+              {todos.length === 0 && <>
+                <div className="text-center text-xl py-10">Start your to-do list</div>
+              </>}
+              {filteredTodos.map((todo, index) => (
+                <Todoitem todo={todo} key={index} fetchTodos={fetchTodos} />
+              ))}
+            </div>
+
+          )}
         </div>
       </main>
     </>
-  )
+  );
 }
