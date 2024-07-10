@@ -34,7 +34,7 @@ export default function Addtodo({ fetchTodos }: AddtodoProps) {
 
     return (
         <form action=""
-            className="flex justify-center p-3"
+            className="flex justify-center p-3 "
             onSubmit={handleSubmit}>
 
             <input type="text"
