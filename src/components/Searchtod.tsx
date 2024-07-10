@@ -37,7 +37,7 @@ function Searchtod({ todos, fetchTodos }: { todos: todoType[], fetchTodos: () =>
                     <div className="text-center text-xl py-10">Start your to-do list</div>
                 </>}
                 {filteredTodos.map((todo, index) => (
-                    <Todoitem todo={todo} key={index} fetchTodos={fetchTodos} />
+                    <Todoitem index={index} todo={todo} key={index} fetchTodos={fetchTodos} />
                 ))}
             </div>
         </>
