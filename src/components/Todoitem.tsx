@@ -18,7 +18,6 @@ export default function Todoitem({ todo, fetchTodos, index }: todoItemProps) {
                 </div>
                 <div className="flex">
                     <Deletetodo fetchTodos={fetchTodos} id={todo.id} />
-
                 </div>
             </div>
         </>

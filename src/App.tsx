@@ -2,15 +2,10 @@ import { useEffect, useState } from 'react';
 import Addtodo from '@/components/Addtodo';
 import { todoType } from '@/type/todoType';
 import Searchtod from '@/components/Searchtod';
+import LoadingOverlay from './components/LoadingOverlay';
 const apiUrl = import.meta.env.VITE_API_URL;
 
-function LoadingOverlay() {
-  return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="text-white text-2xl">Loading...</div>
-    </div>
-  );
-}
+
 
 
 export default function App() {

@@ -15,7 +15,7 @@ export default function Addtodo({ fetchTodos }: AddtodoProps) {
             },
             body: JSON.stringify({ title: input, completed: true })
         })
-            .then(() => fetchTodos()) // Reload todos after adding a new one
+            .then(() => fetchTodos())
             .catch(error => console.error('Error adding todo:', error));
     }
 

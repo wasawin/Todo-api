@@ -11,7 +11,7 @@ export default function Deletetodo({ fetchTodos, id }: DeletetodoProps) {
         fetch(`${apiUrl}/${id}`, {
             method: 'DELETE',
         })
-            .then(() => fetchTodos()) // Reload todos after adding a new one
+            .then(() => fetchTodos())
             .catch(error => console.error('Error adding todo:', error));
     }
 
