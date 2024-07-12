@@ -13,7 +13,7 @@ export default function Addtodo({ fetchTodos }: AddtodoProps) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ title: input, completed: true })
+            body: JSON.stringify({ title: input, completed: false })
         })
             .then(() => fetchTodos())
             .catch(error => console.error('Error adding todo:', error));
