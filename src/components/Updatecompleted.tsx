@@ -26,7 +26,7 @@ export const Updatecompleted = ({ todo, fetchTodos }: updateCompletedProps) => {
         id=""
         checked={todo.completed}
         onChange={() => changeCompleted(todo.id)}
-        className="size-5 rounded "
+        className="size-4  hover:ring-2"
       />
     </>
   );

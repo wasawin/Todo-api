@@ -26,7 +26,7 @@ export default function App() {
     <>
       {loading && <LoadingOverlay />}
       <main className="h-screen p-[4%] overflow-y-auto">
-        <h1 className="text-3xl font-bold underline text-center mb-5">Todo</h1>
+        <h1 className="text-3xl font-bold underline text-center mb-5 ">Todo</h1>
         <div className="bg-red-500 rounded-xl space-y-4 max-w-lg mx-auto py-4  ">
           <Addtodo fetchTodos={fetchTodos} />
           {!loading && <Searchtod todos={todos} fetchTodos={fetchTodos} />}
