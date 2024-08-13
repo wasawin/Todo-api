@@ -16,7 +16,9 @@ export default function Todoitem({ todo, fetchTodos, index }: todoItemProps) {
           <div className="">{index + 1}</div>
           <Updatecompleted todo={todo} fetchTodos={fetchTodos} />
 
-          <div className="">{todo.title}</div>
+          <div className={`${todo.completed ? 'line-through' : ''}`}>
+            {todo.title}
+          </div>
         </div>
         <div className="flex items-center gap-3">
           <Edittitle fetchTodos={fetchTodos} todo={todo} />
